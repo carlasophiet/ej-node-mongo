@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <% include templates/head %>
+  </head>
+  <body>
+    <% include partials/navbar %>
+
+    <div class="container contenedor">
+      <div class="starter-template text-left">
+
+        <h2>Lista</h2>
+
+        <% if(typeof error !== 'undefined') { %>
+          <div class="alert alert-error" role="alert">
+            <strong>Ahhh!
+            </strong>
+            <%= error %>
+          </div>
+        <% } %>
+
+        <% if(typeof success !== 'undefined') { %>
+          <div class="alert alert-success" role="alert">
+            <strong>Ok!</strong>
+            <%= success %>
+          </div>
+        <% } %>
+
+        <table class="table">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for (var i = 0; i < users.length; i++) { %>
+              <tr>
+                <td><%= users[i].name %></td>
+                <td><%= users[i].lastname %></td>
+                <td><%= users[i].email %></td>
+              </tr>
+            <% } %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <% include templates/js %>
+  </body>
+
+</html>

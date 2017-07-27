@@ -1,0 +1,56 @@
+<html>
+
+  <head>
+    <% include templates/head %>
+  </head>
+
+  <body>
+  <% include partials/navbar %>
+
+    <div class="container contenedor">
+      <div class="starter-template text-left">
+
+        <h2>Sube tu información</h2>
+
+        <form method="post" action="/" id="formulario">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <label for="lastname">Apellido</label>
+            <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Apellido">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Mail">
+          </div>
+
+          <div class="form-group">
+            <label for="sex">Sexo</label>
+            <select name="sex" class="form-control" id="sex" placeholder="Sexo">
+              <option value="-1">elegir</option>
+              <option value="m">
+                masculino
+              </option>
+              <option value="f">
+                femenino
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Edad</label>
+            <input name="age" type="number" class="form-control" id="age" placeholder="Edad">
+          </div>
+          <button class="btn" id="ingresar">Crear</button>
+        </form>
+      </div>
+      <div id="gracias-div"><ul id="gracias"></ul></div>
+    </div><!--CIERRE DIV CONTENEDOR-->
+
+    <% include templates/js %>
+  </body>
+
+</html>
