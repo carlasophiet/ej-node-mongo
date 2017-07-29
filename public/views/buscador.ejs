@@ -1,0 +1,43 @@
+<html>
+
+  <head>
+    <% include templates/head %>
+  </head>
+
+  <body>
+  <% include partials/navbar %>
+
+    <div class="container contenedor">
+      <div class="starter-template text-left">
+
+        <h2>Buscador</h2>
+
+          <div class="form-group">
+            <select name="buscador" class="form-control" id="buscador">
+              <option value="-1">Elegir</option>
+              <option value="menores">
+                Menores a 18 años
+              </option>
+              <option value="mayores">
+                Mayores a 18 años
+              </option>
+               <option value="f">
+                sexo femenino
+              </option>
+               <option value="m">
+                sexo masculino
+              </option>
+            </select>
+          </div>
+
+          
+          <button class="btn" id="buscar">Buscar</button>
+        </form>
+      </div>
+      <div id="respuesta-div"><ul id="respuesta"></ul></div>
+    </div><!--CIERRE DIV CONTENEDOR-->
+
+    <% include templates/js %>
+  </body>
+
+</html>

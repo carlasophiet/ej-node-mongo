@@ -1,5 +1,4 @@
 var express = require('express'),
-  mailSender = require('./email'),
   usersController = require('./users'),
   router = express.Router();
 
@@ -10,11 +9,6 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/about-us', function(req, res) {
-  res.render('about-us', {
-    title: "Ejemplo Node | About Us"
-  });
-});
 
 router.get('/users', usersController.listUsers);
 
