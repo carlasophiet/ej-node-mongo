@@ -37,5 +37,33 @@ module.exports = {
         });
       }
     });
-  }
+  },
+
+  buscadorUsuario: function(req,res){
+    var users = global.db.collection("users");
+    
+    if (datos == 1){
+      res = users.find({'age': ('$lt : 18')});
+    }
+    else if (datos == 2){
+      res = users.find({'age': ('$gte : 18')});;
+    }
+    else if (datos == 3){
+      res = users.find({'sex': 'F'});;
+    }else if (datos == 4){
+      res = users.find({'sex' : 'M'});;
+    }
+    res
+    .toArray()
+    .then(function(res){
+
+      return res.send(res)
+      
+    })
+    .catch(function(){
+      return res.end('error')
+    });
+
+  }//buscadorUsuario
+
 };

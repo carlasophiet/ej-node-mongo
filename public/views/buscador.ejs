@@ -14,19 +14,6 @@
 
           <div class="form-group">
             <select name="buscador" class="form-control" id="buscador">
-              <option value="-1">Elegir</option>
-              <option value="menores">
-                Menores a 18 años
-              </option>
-              <option value="mayores">
-                Mayores a 18 años
-              </option>
-               <option value="f">
-                sexo femenino
-              </option>
-               <option value="m">
-                sexo masculino
-              </option>
             </select>
           </div>
 
@@ -34,9 +21,21 @@
           <button class="btn" id="buscar">Buscar</button>
         </form>
       </div>
-      <div id="respuesta-div"><ul id="respuesta"></ul></div>
-    </div><!--CIERRE DIV CONTENEDOR-->
+      <div id="respuesta-div"><p id="respuesta"></p></div>
+      <table class="table" id="tabla">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>       
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla">
+          </tbody>
+        </table>
 
+
+    </div><!--CIERRE DIV CONTENEDOR-->
+      
     <% include templates/js %>
   </body>
 

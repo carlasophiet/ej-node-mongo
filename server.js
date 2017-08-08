@@ -18,7 +18,7 @@ app.set('views', path.join(__dirname, 'public', 'views'));
 app.use(express.static('public') );
 
 
-app.use(require("./controllers/routes"))
+app.use(require("./controllers/routes"));
 
 
 var url = 'mongodb://localhost:27017/ej-node-mongo';

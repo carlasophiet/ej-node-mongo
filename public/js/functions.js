@@ -1,16 +1,29 @@
 var errores= [];
+var opciones= ['Elija una opción','Menor a 18 años', 'Mayor a 18 años','Sexo Femenino', 'Sexo Másculino'];
+
 
 $(document).ready(function(){
 	errores=[];
+	var select = $('#buscador'); 
+	for (i=0;i< opciones.length;i++){
+		value= i; //generalmente se pone i + 1 para no usar el cero, YO NECESITO EL CERO PARA QUE SER SI SABE ELIGIÓ O NO.
+		var opcion = '<option value="'+ value +'">'+opciones[i]+'</option>';
+		select.append(opcion);
+
+	}
+	$('#tabla').hide();
+	$('#div-respuesta').hide();
 	$('#gracias').hide();
 	$('#ingresar').on('click', function(){
 		errores=[];
 		console.log('funcionó!');
+
 		validarEmail($('#email').val());
 		validarNombre($('#name').val());
 		validarApellido($('#lastname').val());
 		validarEdad($('#age').val());
 		validarSelect($('#sex').val());
+		console.log(errores);
 		if (errores.length == 0){ //si el array de los errores es igual a cero, SUBMIT
 			var nuevoUsuario={
 			'name': $('#ingresar fieldset input#name').val(),
@@ -39,10 +52,67 @@ $(document).ready(function(){
 		   }
         return false;
     }
-});
+});// TERMINA INGRESAR ON CLICK
+
+	$('#buscar').on('click',function(){
+		errores=[];
+		console.log($('#buscador').val());
+		validarSelectBuscador($('#buscador').val());
+		if (errores.length==0){
+			var datos=$('#buscador').val();
+			console.log(datos);
+			$.ajax({
+	            type: 'GET',
+	            data: datos,
+	            url:'/users',
+	       		//success: successAjax(res)
+        		}).done(function(laRespuesta) {
+        			console.log(laRespuesta);
+        			$('#respuesta-div').hide();
+           			$('#tabla').show();
+           			for(i=0;i<laRespuesta.length;i++){
+           			$("cuerpo-tabla").append("<tr><td>" + laRespuesta[i].name + "<td>" + laRespuesta[i].lastname + "</td></tr>");
+      				};
+            });
+        }
+		else{
+			console.log('todo mal!');
+			$('#respuesta-div').show();
+			$('#respuesta-div').css('background-color','red');
+			for (i=0;i<errores.length;i++){ 
+				$('#respuesta').append(errores[i]);
+		   }
+		}//temina else
+
+	});//TERMINA BUSCAR ON CLICK
+
+
+
+
 
 
 });//termina doc ready
+
+	/*function successAjax(data){
+		$('#respuesta-div').hide();
+        $('#tabla').show();
+        for (i=0; i < data.length ;i++)
+        $("cuerpo-tabla").append("<tr><td" + data[i].name + "><td" + data[i].lastname + "></td></tr>");
+	}*/
+
+
+
+
+		function validarSelectBuscador(opcion){
+		if (opcion == 0){
+			console.log('no busca');
+			errores.push("<p>Elija una opción para filtrar los usuarios.</p>");
+		}else{
+			console.log('BUSCA!');
+			return true;
+		}return false;
+
+	}
 
 	function validarSelect(opcion){
 		if (opcion == 0){
