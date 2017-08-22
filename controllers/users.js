@@ -41,29 +41,22 @@ module.exports = {
 
   buscadorUsuario: function(req,res){
     var users = global.db.collection("users");
-    
-    if (datos == 1){
-      res = users.find({'age': ('$lt : 18')});
+    var query='';
+    //(req == 1): query= '{"age":{"$lt":18}}' ? (req==2) : query='{"age":{"$gte":18}}' ? (req==3) : query='{"sex":"f"}' ? query='{"sex":"m"}';
+    if (req ==1){query= '{"age":{"$lt":18}}';}
+    else if (req==2){query='{"age":{"$gte":18}}';}
+    else if (req==3){query='{"sex":"f"}';}
+    else if (req==4){query='{"sex":"m"}';}
+    users.find(query, function(err, result){
+      if (err){
+        console.log('problemas en buscadorUsuario!!');
+      }else{
+        result
+          .toArray()
+          .then(function (result){
+            return res.send(result);
+          })
     }
-    else if (datos == 2){
-      res = users.find({'age': ('$gte : 18')});;
-    }
-    else if (datos == 3){
-      res = users.find({'sex': 'F'});;
-    }else if (datos == 4){
-      res = users.find({'sex' : 'M'});;
-    }
-    res
-    .toArray()
-    .then(function(res){
-
-      return res.send(res)
-      
-    })
-    .catch(function(){
-      return res.end('error')
-    });
-
+  })
   }//buscadorUsuario
-
 };

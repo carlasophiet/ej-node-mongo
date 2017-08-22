@@ -19,7 +19,7 @@ router.get('/buscador', function(req,res){
 	});
 });
 
-router.get('/users',usersController.buscadorUsuario); 
+router.get('api/users/',usersController.buscadorUsuario); 
 
 router.post('/', usersController.newUser);
 

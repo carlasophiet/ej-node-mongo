@@ -1,16 +1,9 @@
 var errores= [];
-var opciones= ['Elija una opción','Menor a 18 años', 'Mayor a 18 años','Sexo Femenino', 'Sexo Másculino'];
+
 
 
 $(document).ready(function(){
 	errores=[];
-	var select = $('#buscador'); 
-	for (i=0;i< opciones.length;i++){
-		value= i; //generalmente se pone i + 1 para no usar el cero, YO NECESITO EL CERO PARA QUE SER SI SABE ELIGIÓ O NO.
-		var opcion = '<option value="'+ value +'">'+opciones[i]+'</option>';
-		select.append(opcion);
-
-	}
 	$('#tabla').hide();
 	$('#div-respuesta').hide();
 	$('#gracias').hide();
@@ -64,8 +57,7 @@ $(document).ready(function(){
 			$.ajax({
 	            type: 'GET',
 	            data: datos,
-	            url:'/users',
-	       		//success: successAjax(res)
+	            url:'api/users/'
         		}).done(function(laRespuesta) {
         			console.log(laRespuesta);
         			$('#respuesta-div').hide();
