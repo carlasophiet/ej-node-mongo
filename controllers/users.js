@@ -43,10 +43,10 @@ module.exports = {
     var users = global.db.collection("users");
     var query='';
     //(req == 1): query= '{"age":{"$lt":18}}' ? (req==2) : query='{"age":{"$gte":18}}' ? (req==3) : query='{"sex":"f"}' ? query='{"sex":"m"}';
-    if (req ==1){query= '{"age":{"$lt":18}}';}
-    else if (req==2){query='{"age":{"$gte":18}}';}
-    else if (req==3){query='{"sex":"f"}';}
-    else if (req==4){query='{"sex":"m"}';}
+    if (req.query.opt ==1){query= '{"age":{"$lt":"18"}}';}
+    else if (req.query.opt==2){query='{"age":{"$gte":"18"}}';}
+    else if (req.query.opt==3){query='{"sex":"f"}';}
+    else if (req.query.opt==4){query='{"sex":"m"}';}
     users.find(query, function(err, result){
       if (err){
         console.log('problemas en buscadorUsuario!!');

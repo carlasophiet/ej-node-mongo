@@ -49,15 +49,16 @@ $(document).ready(function(){
 
 	$('#buscar').on('click',function(){
 		errores=[];
+		$('#respuesta').html('');
 		console.log($('#buscador').val());
 		validarSelectBuscador($('#buscador').val());
 		if (errores.length==0){
-			var datos=$('#buscador').val();
+			var datos={opt: $('#buscador').val() }; //se tiene que pasar como objeto!
 			console.log(datos);
 			$.ajax({
 	            type: 'GET',
 	            data: datos,
-	            url:'api/users/'
+	            url:'api/users'
         		}).done(function(laRespuesta) {
         			console.log(laRespuesta);
         			$('#respuesta-div').hide();
@@ -70,7 +71,7 @@ $(document).ready(function(){
 		else{
 			console.log('todo mal!');
 			$('#respuesta-div').show();
-			$('#respuesta-div').css('background-color','red');
+			$('#respuesta-div').css('background-color','#E28B8B');
 			for (i=0;i<errores.length;i++){ 
 				$('#respuesta').append(errores[i]);
 		   }
