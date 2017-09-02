@@ -1,13 +1,16 @@
 {
-  "name": "ejemplo-node",
+  "name": "ej-node-mongo",
   "version": "1.0.0",
+  "engines": {
+    "node":"6.11.1",
+    "npm":"5.3.0"
+  },
   "description": "ejemplo de node",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "ezequiel",
+  "author": "carla",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",

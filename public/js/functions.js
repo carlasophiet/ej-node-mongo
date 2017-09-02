@@ -60,6 +60,7 @@ $(document).ready(function(){
 	            data: datos,
 	            url:'api/users'
         		}).done(function(laRespuesta) {
+        			console.log('todo bien');
         			console.log(laRespuesta);
         			$('#respuesta-div').hide();
            			$('#tabla').show();
