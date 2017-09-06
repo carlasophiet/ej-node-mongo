@@ -21,8 +21,8 @@ app.use(express.static('public') );
 app.use(require("./controllers/routes"));
 
 
-//var url = 'mongodb://localhost:27017/ej-node-mongo';
-var url = process.env.MONGODB_URI;
+var url = 'mongodb://localhost:27017/ej-node-mongo';
+//var url = process.env.MONGODB_URI;
 
 MongoClient.connect(url, function(err, db) {
   if (err) {
@@ -32,7 +32,7 @@ MongoClient.connect(url, function(err, db) {
 
     
     app.listen(port, function () {
-      console.log('its alive on port 3000!');
+      console.log('its alive');
     });
   }
 });

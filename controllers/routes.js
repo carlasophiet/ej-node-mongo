@@ -23,6 +23,4 @@ router.get('api/users',usersController.buscadorUsuario);
 
 router.post('/', usersController.newUser);
 
-
-
 module.exports = router;
